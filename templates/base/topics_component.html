@@ -1,10 +1,12 @@
-<h3>Browse Topics</h3>
-        <hr>
-        <div>
-            <a href="{% url 'home' %}">All</a>
+<div class="topics-container card">
+    <h3><i class="fas fa-tags icon"></i> Temas</h3>
+    <hr>
+    <div class="topic-item">
+        <a href="{% url 'home' %}" class="topic-link active">Todos</a>
+    </div>
+    {% for topic in topics %}
+        <div class="topic-item">
+            <a href="{% url 'home' %}?q={{ topic.name }}" class="topic-link">{{ topic.name }}</a>
         </div>
-        {% for topic in topics %}
-        <div>
-            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-        </div>
-        {% endfor %}
+    {% endfor %}
+</div>

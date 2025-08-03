@@ -1,15 +1,26 @@
-<h3>Recent Activities</h3>
-        <hr>
-        {% for message in room_messages %}
-            <div>
-                <small><a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a> {{message.created|timesince}}</small>
-                <small>replied to "{{message.room}}"</small>
-
-                <p>{{message}}</p>
+<div class="activity-container card">
+    <h3><i class="fas fa-bolt icon"></i> Actividades Recientes</h3>
+    <hr>
+    {% for message in room_messages %}
+        <div class="activity-item">
+            <div class="activity-header">
+                <small>
+                    <a href="{% url 'user-profile' message.user.id %}" class="user-link">
+                        <i class="fas fa-user icon"></i> @{{ message.user }}
+                    </a>
+                    &nbsp;·&nbsp; {{ message.created|timesince }} atrás
+                </small>
                 {% if request.user == message.user %}
-                <a href="{% url 'delete-message' message.id %}">Delete</a>
+                    <a href="{% url 'delete-message' message.id %}" class="btn-action delete" title="Eliminar">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
                 {% endif %}
-                <hr>
-                
             </div>
-        {% endfor %}
+            <small class="activity-room">Respondió en "{{ message.room }}"</small>
+            <p class="activity-message">{{ message }}</p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>No hay actividades recientes.</p>
+    {% endfor %}
+</div>

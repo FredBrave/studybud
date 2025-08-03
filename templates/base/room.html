@@ -1,50 +1,58 @@
 {% extends "main.html" %}
 {% block content %}
 
-<style>
-    .room-container{
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-    }
-
-</style>
-<div class="room-container">
-    <div>
-        <h1>{{room.name}}</h1>
-        <p>{{room.description}}</p>
+<div class="container room-container">
+    <div class="card room-main">
+        <h1>{{ room.name }}</h1>
+        <p>{{ room.description }}</p>
 
         <div class="comment-wrapper">
-            <h3>Conversation</h3>
+            <h3><i class="fas fa-comments icon"></i> Conversación</h3>
             <hr>
             {% for room_message in room_messages %}
-            <div>
-                {% if request.user == room_message.user %}
-                <a href="{% url 'delete-message' room_message.id %}">Delete</a>
-                {% endif %}
-                <small>@{{room_message.user}}  {{room_message.created|timesince}} ago</small>
-                <p>{{room_message.body}}</p>
-                <hr>
-                </a>
-            </div>
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <small class="comment-user">
+                            <a href="{% url 'user-profile' room_message.user.id %}">@{{ room_message.user }}</a> &middot; {{ room_message.created|timesince }} ago
+                        </small>
+                        {% if request.user == room_message.user %}
+                            <a href="{% url 'delete-message' room_message.id %}" class="btn-action delete" title="Eliminar mensaje">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <p class="comment-body">{{ room_message.body }}</p>
+                    <hr>
+                </div>
+            {% empty %}
+                <p>No hay mensajes en esta sala aún.</p>
             {% endfor %}
         </div>
+
         {% if request.user.is_authenticated %}
-        <div class="comment-form">
-            <form method="POST" action="">
-                {% csrf_token %}
-                <input type="text" name="body" placeholder="Write your message here">
-            </form>
-        </div>
+            <div class="comment-form">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="text" name="body" placeholder="Escribe tu mensaje aquí..." required autocomplete="off">
+                    <button type="submit" class="btn-send"><i class="fas fa-paper-plane"></i> Enviar</button>
+                </form>
+            </div>
+        {% else %}
+            <p><a href="{% url 'login' %}">Inicia sesión</a> para poder comentar.</p>
         {% endif %}
     </div>
-    <div>
-        <h3>Participants</h3>
+
+    <div class="card participants">
+        <h3><i class="fas fa-users icon"></i> Participantes</h3>
         <hr>
         {% for user in participants %}
-            <div>
-                <p>@{{user.username}}</p>
+            <div class="participant-item">
+                <p>@{{ user.username }}</p>
             </div>
+        {% empty %}
+            <p>No hay participantes aún.</p>
         {% endfor %}
     </div>
 </div>
+
 {% endblock content %}

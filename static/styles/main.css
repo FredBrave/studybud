@@ -1,3 +1,714 @@
+/* Colores base */
+:root {
+    --verde-claro: #4CAF50;
+    --gris-fondo: #f0f0f0;
+    --blanco: #ffffff;
+    --texto: #333333;
+    --rojo: #e53935;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: aquamarine;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--gris-fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    padding-top: 120px; /* espacio para navbar */
+    
+}
+
+/* Navbar */
+nav {
+    background-color: var(--verde-claro);
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Contenido principal */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Recuadros de contenido */
+.card {
+    background-color: var(--blanco);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensajes */
+ul.messages {
+    list-style: none;
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 600px;
+    background-color: var(--blanco);
+    border-left: 5px solid var(--verde-claro);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Iconos usando Font Awesome */
+.icon {
+    margin-right: 8px;
+    color: var(--verde-claro);
+}
+
+/* Navbar layout */
+.navbar {
+    background-color: var(--verde-claro);
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.navbar-left h1 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .icon {
+    margin-right: 10px;
+}
+
+/* Search form */
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.search-form input[type="text"] {
+    border: none;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.search-form button {
+    background: none;
+    border: none;
+    color: var(--verde-claro);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* User section */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user {
+    margin: 0;
+    font-weight: 500;
+}
+
+.btn-login, .btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.2s ease;
+}
+
+.btn-login:hover, .btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Espaciado del contenido por debajo del navbar fija */
+.container {
+    margin-top: 80px;
+}
+
+/* Grid layout para la página de inicio */
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    gap: 20px;
+}
+
+/* Botón crear sala */
+.btn-create-room {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: var(--verde-claro);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-create-room:hover {
+    background-color: #45a049;
+}
+/* Página de autenticación */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 20px;
+    color: var(--verde-claro);
+}
+
+.auth-card label {
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-auth {
+    margin-top: 20px;
+    background-color: var(--verde-claro);
+    color: white;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-auth:hover {
+    background-color: #45a049;
+}
+
+.auth-link {
+    color: var(--verde-claro);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feed-item {
+    padding: 15px 20px;
+}
+
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-link {
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.host-link:hover {
+    text-decoration: underline;
+}
+
+.room-topic {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.room-title {
+    font-size: 1.2rem;
+    color: var(--verde-claro);
+    text-decoration: none;
+}
+
+.room-title:hover {
+    text-decoration: underline;
+}
+
+/* Acciones de editar y eliminar */
+.feed-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn-action.edit {
+    background-color: #4caf50;
+}
+
+.btn-action.edit:hover {
+    background-color: #43a047;
+}
+
+.btn-action.delete {
+    background-color: #e53935;
+}
+
+.btn-action.delete:hover {
+    background-color: #c62828;
+}
+
+.activity-container h3 {
+    color: var(--verde-claro);
+    margin-bottom: 10px;
+}
+
+.activity-item {
+    margin-bottom: 15px;
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.user-link {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.user-link:hover {
+    text-decoration: underline;
+}
+
+.activity-room {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 3px;
+    margin-bottom: 8px;
+}
+
+.activity-message {
+    font-size: 1rem;
+    color: var(--texto);
+    margin-bottom: 5px;
+}
+
+/* Botón eliminar */
+/* Botón eliminar compacto */
+.btn-action.delete {
+    background-color: #e53935;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 40px;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.btn-action.delete i {
+    font-size: 0.75rem;
+}
+
+.btn-action.delete:hover {
+    background-color: #c62828;
+}
+
+.topics-container h3 {
+    color: var(--verde-claro);
+    margin-bottom: 10px;
+}
+
+.topic-item {
+    margin-bottom: 8px;
+}
+
+.topic-link {
+    text-decoration: none;
+    color: var(--verde-claro);
+    font-weight: 600;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 15px;
+    background-color: rgba(76, 175, 80, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.topic-link:hover {
+    background-color: rgba(76, 175, 80, 0.25);
+}
+
+.topic-link.active {
+    background-color: var(--verde-claro);
+    color: white;
+}
+
+/* Contenedor general con margen superior */
+.container {
+    margin-top: 80px; /* Para que no tape la navbar fija */
+    padding: 20px;
+}
+
+/* Título de usuario */
+.profile-username {
+    margin-bottom: 25px;
+    color: var(--verde-claro);
+    font-weight: 700;
+}
+
+/* Grid para perfil */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 25px;
+}
+
+/* Las tarjetas de los lados */
+.profile-section {
+    padding: 20px;
+}
+
+/* La sección central sin tarjeta para destacar */
+.profile-main-section {
+    /* Puedes usar tarjeta o dejarlo limpio, según prefieras */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Si quieres que el feed (centro) también esté en tarjeta, agrega esta clase */
+.profile-main-section.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+}
+
+.room-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 25px;
+    margin-top: 80px; /* espacio para navbar */
+}
+
+.room-main, .participants {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Comentarios */
+.comment-wrapper h3 {
+    color: var(--verde-claro);
+    margin-bottom: 10px;
+}
+
+.comment-item {
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.comment-user a {
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.comment-user a:hover {
+    text-decoration: underline;
+}
+
+.comment-body {
+    margin: 5px 0 10px 0;
+    font-size: 1rem;
+    color: var(--texto);
+}
+
+/* Botón eliminar mensaje */
+.btn-action.delete {
+    background-color: #e53935;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 40px;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.btn-action.delete i {
+    font-size: 0.75rem;
+}
+
+.btn-action.delete:hover {
+    background-color: #c62828;
+}
+
+/* Formulario de comentario */
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-form form {
+    display: flex;
+    gap: 10px;
+}
+
+.comment-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.comment-form input[type="text"]:focus {
+    border-color: var(--verde-claro);
+}
+
+.btn-send {
+    background-color: var(--verde-claro);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-send:hover {
+    background-color: #45a049;
+}
+
+/* Participantes */
+.participants h3 {
+    color: var(--verde-claro);
+    margin-bottom: 10px;
+}
+
+.participant-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.participant-item:last-child {
+    border-bottom: none;
+}
+
+.participant-item p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.form-container {
+    max-width: 500px; /* máximo ancho */
+    margin: 80px auto 40px; /* margen arriba, centrado horizontalmente, margen abajo */
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+form {
+    width: 100%; /* que ocupe todo dentro del contenedor limitado */
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--texto);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: var(--verde-claro);
+}
+
+.btn-submit {
+    background-color: var(--verde-claro);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.delete-confirm-container {
+    max-width: 400px;
+    margin: 80px auto 40px; /* espacio para navbar y centrado */
+    padding: 25px;
+    text-align: center;
+}
+
+.delete-confirm-container p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--texto);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-return, .btn-confirm {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-return {
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-return:hover {
+    background-color: #999;
+    color: white;
+}
+
+.btn-confirm {
+    background-color: var(--rojo);
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: #b71c1c;
 }

@@ -1,7 +1,16 @@
 {% extends 'main.html' %}
 {% block content %}
 <div class="container profile-container">
-    <h1 class="profile-username">{{ user.username }}</h1>
+    <div class="profile-header card">
+        <h1 class="profile-username">{{ user.username }}</h1>
+        <p class="profile-about">Este usuario aún no ha escrito una biografía.</p>
+
+        {% if request.user == user %}
+            <a href="{% url 'update-user' %}" class="btn-profile-edit">
+                <i class="fas fa-cog"></i> Editar perfil
+            </a>
+        {% endif %}
+    </div>
 
     <div class="profile-grid">
         <div class="card profile-section">

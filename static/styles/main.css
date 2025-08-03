@@ -813,3 +813,25 @@ form select:focus {
 .btn-submit:hover {
     background-color: #388e3c;
 }
+.btn-create-room {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--verde-claro);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-create-room i {
+    color: inherit; /* Hereda el color del texto (white) */
+    font-size: 1rem;
+}
+
+.btn-create-room:hover {
+    background-color: #388e3c;
+}
